@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_heredoc_read_content.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/08 04:40:24 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:28:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	ft_is_heredoc_read_content(t_ms *ms, t_command *cmd, t_heredoc *h)
 			write(h->fd, "\n", 1);
 		}
 		ft_free(h->read_content);
+		ft_exit_local_free(ms);
 		close(h->fd);
 		open(h->str, O_RDONLY);
+		free (h->str);
 		exit(g_exit_status);
 	}
 	signals_continue(ms, cmd, h);
