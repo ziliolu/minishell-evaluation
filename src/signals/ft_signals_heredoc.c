@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 00:55:09 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/12 19:03:15 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:18:11 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_handler_heredoc(int signal, t_heredoc *ptr)
 {
-	static t_heredoc *save = NULL;
+	static t_heredoc	*save = NULL;
 
 	if (save == NULL)
 		save = ptr;
