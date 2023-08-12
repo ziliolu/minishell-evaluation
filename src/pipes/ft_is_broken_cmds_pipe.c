@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_broken_cmds_pipe.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 00:01:54 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/08 15:32:59 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:36:14 by lpicoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*ft_is_broken_cmds_pipe(t_ms *ms, char *str, t_broken_cmds *b)
 		if (!b->prompt_tmp)
 		{
 			printf("minishell: syntax error: unexpected end of file\n");
-			g_exit_status = 2;
 			return ("exit");
 		}
 		if (ft_input_is_pipe(ms, &tmp_readline, str, b))

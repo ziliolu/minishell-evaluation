@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_heredoc_read_content.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/08 16:31:23 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/08 04:40:24 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	ft_is_heredoc_read_content(t_ms *ms, t_command *cmd, t_heredoc *h)
 			ft_free(h->read_content);
 			h->read_content = readline(h->prompt);
 			if (ft_is_ctrld_heredoc(cmd, h))
-				exit (0);
+				return ;
 			if (ft_strcmp(h->read_content, h->eof) == 0)
+			{
 				break ;
+			}
 			write(h->fd, h->read_content, ft_strlen(h->read_content));
 			write(h->fd, "\n", 1);
 		}

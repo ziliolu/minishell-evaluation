@@ -6,11 +6,20 @@
 /*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 00:01:50 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/07/30 18:52:22 by lpicoli-         ###   ########.fr       */
+/*   Updated: 2023/08/12 12:29:04 by lpicoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void	ft_readft_if_readline_is_free(t_ms *ms)
+{
+	ft_free_array(ms->ms_argv);
+	ft_free_cmds(ms);
+	free(ms->count_args);
+	ft_free_elem_list(*ms->lexed_list);
+	free(ms->lexed_list);
+}
 
 void	ft_if_readline_is_valid(t_ms *ms, char *read_content)
 {
@@ -18,6 +27,7 @@ void	ft_if_readline_is_valid(t_ms *ms, char *read_content)
 	{
 		ft_lexer(ms, read_content);
 		ms->ms_argv = ft_split(read_content, ' ');
+		ft_free(read_content);
 		ft_count_args(ms, *ms->lexed_list);
 		ft_parser(ms, *ms->lexed_list);
 		if (ft_cmd_args_validation(ms))
@@ -33,10 +43,6 @@ void	ft_if_readline_is_valid(t_ms *ms, char *read_content)
 				ms->dot_comma_flag = false;
 			}
 		}
-		ft_free_array(ms->ms_argv);
-		ft_free_cmds(ms);
-		free(ms->count_args);
-		ft_free_elem_list(*ms->lexed_list);
-		free(ms->lexed_list);
+		ft_readft_if_readline_is_free(ms);
 	}
 }

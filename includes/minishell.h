@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:36:28 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/08 15:05:07 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 07:39:50 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@
 # include <signal.h>
 
 # define HEREDOC "heredoc.tmp"
+
+# define HEREDOC "heredoc.tmp"
+# define RED "\001\e[0;31m\002"
+# define ORG "\001\e[93m\002"
+# define GRN "\001\e[32m\002"
+# define LGRN "\001\e[92m\002"
+# define BLU "\001\e[34m\002"
+# define LBLU "\001\e[94m\002"
+# define RESET "\001\e[0m\002"
 
 extern int	g_exit_status;
 
@@ -140,6 +149,8 @@ typedef struct s_ms
 	int			j;
 	int			go_out;
 	char		*home_dir;
+	char		*clean_read_content;
+	t_counters	*clean;
 }	t_ms;
 
 typedef struct s_cd
@@ -248,6 +259,7 @@ void	ft_exit_free(t_ms *ms);
 char	*ft_exit_is_cmd_arg(t_ms *ms, t_command *cmd, char *tmp);
 bool	ft_exit_validation(t_ms *ms, t_command *cmd);
 void	ft_exit(t_ms *ms, t_command *cmd);
+void	ft_exit_local_free(t_ms *ms);
 void	ft_export_is_cmd_arg(t_ms *ms, t_command *cmd, int i);
 void	ft_export_is_in_env_list(t_ms *ms, t_command *cmd, t_export *exp);
 void	ft_export_is_in_env_list_else(t_ms *ms, t_command *cmd, t_export *exp);

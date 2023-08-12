@@ -51,5 +51,4 @@ void	ft_env(t_ms *ms, t_command *cmd, t_lst *lst)
 		return ;
 	}
 	ft_print_list(lst);
-	g_exit_status = 0;
 }

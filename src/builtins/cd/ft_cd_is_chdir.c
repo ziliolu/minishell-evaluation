@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd_is_chdir.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:51:00 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/08/08 16:07:55 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/06 05:21:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,9 @@ void	ft_cd_is_chdir(t_ms *ms, t_command *cmd, t_cd *cd)
 	{
 		ft_modify_oldpwd(ms, cd);
 		ft_modify_pwd(ms, cd);
-		g_exit_status = 0;
 	}
 	else if (cd->path && cd->path[0] == '$' && ms->spaces_flag == 1)
-	{
 		chdir(ft_return_list_info(ms->ms_env, "HOME"));
-		g_exit_status = 0;
-	}
 	else if (ms->spaces_flag > 1)
 		ft_error(ms, "cd: too many arguments", NULL, 1);
 	else

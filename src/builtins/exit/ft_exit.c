@@ -3,23 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:05:23 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/06 04:28:54 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:14:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
+void	ft_exit_local_free(t_ms *ms)
+{
+	ft_free_env(ms->ms_env);
+	ft_free_env(ms->export_list);
+	ft_free_array(ms->paths);
+	ft_free_array(ms->ms_env_array);
+	ft_free_array(ms->ms_argv);
+	free(ms->count_args);
+	ft_free_elem_list(*ms->lexed_list);
+	free(ms->lexed_list);
+	free(ms->clean);
+	ft_free_env(*ms->vars);
+	free(ms->vars);
+	ft_free_cmds(ms);
+}
+
 void	ft_exit(t_ms *ms, t_command *cmd)
 {
+	int	status;
+
 	if (cmd->args[1] && ft_exit_validation(ms, cmd))
 	{
+		status = ft_atoi(cmd->args[1]);
 		if (ms->n_pipes == 0)
 		{
 			printf("exit\n");
-			exit(ft_atoi(cmd->args[1]));
+			ft_exit_local_free(ms);
+			exit(status);
 		}
 		else
 			g_exit_status = ft_atoi(cmd->args[1]);
@@ -27,6 +47,7 @@ void	ft_exit(t_ms *ms, t_command *cmd)
 	else if (!cmd->args[1] && ms->n_pipes == 0)
 	{
 		printf("exit\n");
+		ft_exit_local_free(ms);
 		exit (g_exit_status);
 	}
 }

@@ -6,6 +6,7 @@ AR = ar rcs
 RM = rm -f
 
 SRC =	./ft_atoi.c\
+	./ft_atoll.c\
 	./ft_bzero.c\
 	./ft_calloc.c\
 	./ft_isalnum.c\

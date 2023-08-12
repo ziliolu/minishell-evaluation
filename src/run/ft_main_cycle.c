@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_cycle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:59:46 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/08/07 06:04:28 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:35:58 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	ft_free_input(char *read_content, char *tmp_prompt)
+{
+	ft_free(read_content);
+	ft_free(tmp_prompt);
+}
 
 void	ft_main_cycle(t_ms *ms, char *read_content, \
 	char *tmp_prompt, char *prompt)
@@ -19,8 +25,6 @@ void	ft_main_cycle(t_ms *ms, char *read_content, \
 	ft_handle_signals();
 	if (!ft_main_cycle_read(ms, &read_content, prompt))
 		return ;
-	if (!read_content)
-		return ;
 	tmp_prompt = ft_trimmed(read_content);
 	if (ft_strcmp(tmp_prompt, "") != 0)
 	{
@@ -28,6 +32,8 @@ void	ft_main_cycle(t_ms *ms, char *read_content, \
 		ms->read_size = ft_strlen(read_content);
 		ft_free(read_content);
 		read_content = ft_broken_cmds(ms, tmp_prompt);
+		ft_free(tmp_prompt);
+		ms->clean_read_content = read_content;
 		if (read_content)
 		{
 			ms->ms_env_array = ft_list_to_array(ms);
@@ -36,8 +42,26 @@ void	ft_main_cycle(t_ms *ms, char *read_content, \
 			ft_free_array(ms->ms_env_array);
 		}
 	}
-	ft_free(read_content);
-	ft_free(tmp_prompt);
+	else
+		ft_free_input(read_content, tmp_prompt);
+}
+
+char	*ft_trimmed_read(char *read_, char *tmp_)
+{
+	if (ft_strlen(tmp_) > 0)
+		read_ = ft_strtrim(tmp_, " ");
+	else
+		read_ = ft_strdup("");
+	return (read_);
+}
+
+char	*ft_trimmed_tmp(char *read_, char *tmp_)
+{
+	if (ft_strlen(read_) > 0)
+		tmp_ = ft_strtrim(read_, " ");
+	else
+		tmp_ = ft_strdup("");
+	return (tmp_);
 }
 
 char	*ft_trimmed(char *str)
@@ -56,9 +80,9 @@ char	*ft_trimmed(char *str)
 		if (read_content)
 			read_size = strlen(read_content);
 		free (read_content);
-		read_content = ft_strtrim(tmp_content, " ");
+		read_content = ft_trimmed_read(read_content, tmp_content);
 		free (tmp_content);
-		tmp_content = ft_strtrim(read_content, "	");
+		tmp_content = ft_trimmed_tmp(read_content, tmp_content);
 		free (read_content);
 		read_content = ft_strdup(tmp_content);
 		size = strlen(read_content);
