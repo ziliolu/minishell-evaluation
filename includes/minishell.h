@@ -6,7 +6,7 @@
 /*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:36:28 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/12 16:44:47 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:01:31 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,7 +401,8 @@ void	ft_handle_signals_loop(void);
 void	ft_handle_signals(void);
 void	ft_handler_loop(int signal);
 void	ft_handler(int signal);
-void	ft_signals_heredoc(void);
+// void	ft_signals_heredoc(void);
+void	ft_signals_heredoc(t_heredoc *ptr);
 void	ft_signals_ignore(void);
 
 // =============== UTILS ===============

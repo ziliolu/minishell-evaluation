@@ -3,27 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals_heredoc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 00:55:09 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/06 15:39:18 by lpicoli-         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:03:15 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_handler_heredoc(int signal)
+void	ft_handler_heredoc(int signal, t_heredoc *ptr)
 {
-	if (signal == SIGINT)
+	static t_heredoc *save = NULL;
+
+	if (save == NULL)
+		save = ptr;
+	else if (signal == SIGINT)
 	{
 		printf("\n");
 		g_exit_status = 130;
+		ft_free(save->eof);
+		ft_free(save->str);
 		exit(g_exit_status);
 	}
 }
 
-void	ft_signals_heredoc(void)
+void	ft_signals_heredoc(t_heredoc *ptr)
 {
-	signal(SIGINT, ft_handler_heredoc);
+	signal(SIGINT, (void *)ft_handler_heredoc);
+	ft_handler_heredoc(-1, ptr);
 	signal(SIGQUIT, SIG_IGN);
 }
