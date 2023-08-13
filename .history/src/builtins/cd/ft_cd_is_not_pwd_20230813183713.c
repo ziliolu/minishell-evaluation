@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:47:53 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/08/13 18:37:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:37:13 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_is_not_pwd(t_ms *ms, t_command *cmd, t_cd *cd)
 			cd->pwd = ft_strtrim_end_quote(cd->oldpwd, '/');
 			if (ft_strcmp(cd->pwd, "") == 0)
 			{
-				free(cd->pwd);
+				free()
 				cd->pwd = ft_strdup("/");
 			}	
 		}

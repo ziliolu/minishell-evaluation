@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:36:32 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 19:43:08 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:43:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	ft_free_cmds_while(t_ms *ms, int i, int j, int k)
 		if (ms->cmds[i].args)
 				free (ms->cmds[i].args);
 		i++;	
+
 	}
 }

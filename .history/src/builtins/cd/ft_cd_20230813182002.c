@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:46:53 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 18:20:04 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:20:02 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	ft_cd_minus_option(t_ms *ms, t_cd *cd)
 }
 
 void	ft_cd(t_ms *ms, t_command *cmd)
-{
+p{
 	t_cd	cd;
 
 	cd.i = 1;

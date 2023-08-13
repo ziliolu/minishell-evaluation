@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:36:32 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 19:43:08 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:28:57 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_cmds_while(t_ms *ms, int i, int j, int k)
 {
-	while (ms->cmds[i].args)
+	while (ms->cmds[i].type)
 	{
 		if (ms->cmds[i].redirs)
 		{
@@ -24,6 +24,8 @@ void	ft_free_cmds_while(t_ms *ms, int i, int j, int k)
 			free (ms->cmds[i].redirs);
 		}
 		while (ms->cmds[i].args[j])
+		while (ms->cmds[i].args)
+		{
 		{
 			if (ms->cmds[i].type != PIPE_LINE)
 				if (ms->cmds[i].args[j]
@@ -32,8 +34,9 @@ void	ft_free_cmds_while(t_ms *ms, int i, int j, int k)
 			j++;
 		}
 		j = 0;
-		if (ms->cmds[i].args)
-				free (ms->cmds[i].args);
-		i++;	
+			if (ms->cmds[i].args)
+					free (ms->cmds[i].args);
+			i++;	
+		}	
 	}
 }
