@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:02:28 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 08:04:31 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:38:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ char	*ft_broken_cmds(t_ms *ms, char *str)
 	b.prompt_tmp = NULL;
 	b.new_str = NULL;
 	b.tmp = NULL;
-	if (str[0] == '|')
+	b.prompt = "> ";
+	if (str[0] == '|') 
 	{
 		ft_error(ms, "syntax error near unexpected token `|'", NULL, 2);
 		return (NULL);
-	}	
+	}
 	if (str[b.size] == '|')
 	{
 		b.size--;
 		while (str[b.size] == ' ')
 			b.size--;
-		if (str[b.size] == '|' || str[b.size] == '>'
-			|| str[b.size] == '<' || str[b.size] == '&')
+		if(str[b.size] == '|' || str[b.size] == '>' || str[b.size] == '<' || str[b.size] == '&')
 		{
 			ft_error(ms, "syntax error near unexpected token `|'", NULL, 2);
 			return (NULL);

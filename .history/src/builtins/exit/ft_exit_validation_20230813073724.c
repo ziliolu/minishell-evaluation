@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:05:23 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 07:37:33 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:37:24 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	ft_is_numeric(char *arg)
 	while (arg[i])
 	{
 		if (!(arg[i] >= 48 && arg[i] <= 57))
-			return (false);
+			return(false);
 		i++;
 	}
 	return (true);

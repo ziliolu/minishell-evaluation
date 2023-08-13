@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:05:23 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 07:37:33 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:32:44 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,10 @@ bool	ft_is_numeric(char *arg)
 	int	i;
 
 	i = 0;
-	while (arg[i])
+	while(arg[i])
 	{
-		if (!(arg[i] >= 48 && arg[i] <= 57))
-			return (false);
-		i++;
+		if (arg[i] >= 48 && arg[i] <= 57))
 	}
-	return (true);
 }
 
 bool	ft_exit_validation(t_ms *ms, t_command *cmd)
@@ -62,8 +59,7 @@ bool	ft_exit_validation(t_ms *ms, t_command *cmd)
 	nbr = ft_atoll(cmd->args[1]);
 	ft_reset_fd_in_out(ms);
 	if ((nbr == 0 && ft_strcmp(cmd->args[1], "0") != 0)
-		|| !ft_is_in_llong_range(cmd->args[1])
-		|| !ft_is_numeric(cmd->args[1]))
+		|| !ft_is_in_llong_range(cmd->args[1]))
 		return (ft_cmd_has_pipes(ms, cmd));
 	else
 	{
