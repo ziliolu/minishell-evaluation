@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:11:50 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/08/13 18:00:54 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:00:48 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_echo_is_cmd_arg(t_command *cmd, t_echo *echo)
 	j = 0;
 	if (!cmd->args[1])
 		return ;
-	while (cmd->args[j]  && cmd->args[echo->i])
+	while (cmd->args[j]  && cmd->args[i])
 	{
 		if (echo_is_n(cmd->args[echo->i]))
 			echo->i++;

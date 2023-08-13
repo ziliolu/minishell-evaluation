@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 17:40:31 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:38:05 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	signals_continue(t_ms *ms, t_command *cmd, t_heredoc *h)
 
 void	ft_exit_heredoc_free(t_ms *ms)
 {
-	ft_free_env(ms->ms_env);
-	ft_free_env(ms->export_list);
+	// ft_free_env(ms->ms_env);
+	// ft_free_env(ms->export_list);
 	// ft_free_array(ms->paths);
 	// ft_free_array(ms->ms_env_array);
 	// ft_free_array(ms->ms_argv);
