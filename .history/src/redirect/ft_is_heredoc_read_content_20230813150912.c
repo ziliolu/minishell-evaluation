@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 15:09:38 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:09:12 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ void	signals_continue(t_ms *ms, t_command *cmd, t_heredoc *h)
 	cmd->in = h->fd;
 }
 
-void	ft_exit_heredoc_free(t_ms *ms)
+void	ft_exit__free(t_ms *ms)
 {
 	ft_free_env(ms->ms_env);
 	ft_free_env(ms->export_list);
-	// ft_free_array(ms->paths);
-	// ft_free_array(ms->ms_env_array);
-	// ft_free_array(ms->ms_argv);
-	// free(ms->count_args);
-	// ft_free_elem_list(*ms->lexed_list);
-	// free(ms->lexed_list);
-	// free(ms->clean);
-	// ft_free_env(*ms->vars);
-	// free(ms->vars);
-	// ft_free_cmds(ms);
+	ft_free_array(ms->paths);
+	ft_free_array(ms->ms_env_array);
+	ft_free_array(ms->ms_argv);
+	free(ms->count_args);
+	ft_free_elem_list(*ms->lexed_list);
+	free(ms->lexed_list);
+	free(ms->clean);
+	ft_free_env(*ms->vars);
+	free(ms->vars);
+	ft_free_cmds(ms);
 }
 
 void	ft_is_heredoc_read_content(t_ms *ms, t_command *cmd, t_heredoc *h)
@@ -45,7 +45,7 @@ void	ft_is_heredoc_read_content(t_ms *ms, t_command *cmd, t_heredoc *h)
 	if (ms->pid == 0)
 	{
 		ft_close_pipes(ms);
-		ft_exit_heredoc_free(ms);
+		ft_exit_local_free(ms);
 		while (ft_strcmp(h->read_content, h->eof) != 0)
 		{
 			ft_free(h->read_content);

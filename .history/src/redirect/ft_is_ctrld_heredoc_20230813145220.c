@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:52:25 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:52:20 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	ft_is_ctrld_heredoc(t_command *cmd, t_heredoc *h)
 {
 	if (!h->read_content)
 	{
-		(void) cmd;
+		
 		//cmd->err = true;
 		printf("minishell: warning:");
 		printf("here-document delimited by end-of-file (wanted `%s')\n", h->eof);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_ctrld_heredoc.c                              :+:      :+:    :+:   */
+/*   ft_is_ctrld.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 14:52:25 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/05 16:48:07 by lpicoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ bool	ft_is_ctrld_heredoc(t_command *cmd, t_heredoc *h)
 {
 	if (!h->read_content)
 	{
-		(void) cmd;
-		//cmd->err = true;
+		cmd->err = true;
 		printf("minishell: warning:");
 		printf("here-document delimited by end-of-file (wanted `%s')\n", h->eof);
 		return (true);
