@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals_heredoc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 00:55:09 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/12 19:18:11 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 23:21:27 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ void	ft_handler_heredoc(int signal, t_heredoc *ptr)
 		g_exit_status = 130;
 		ft_free(save->eof);
 		ft_free(save->str);
+		ft_free_env(save->ms->ms_env);
+		ft_free_env(save->ms->export_list);
+		ft_free_array(save->ms->paths);
+		ft_free_array(save->ms->ms_env_array);
+		ft_free_array(save->ms->ms_argv);
+		free(save->ms->count_args);
+		ft_free_elem_list(*save->ms->lexed_list);
+		free(save->ms->lexed_list);
+		free(save->ms->clean);
+		ft_free_env(*save->ms->vars);
+		free(save->ms->vars);
+		ft_free_cmds(save->ms);
 		exit(g_exit_status);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:05:23 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 15:06:35 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:37:38 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ bool	ft_exit_validation(t_ms *ms, t_command *cmd)
 			if (ms->n_pipes == 0)
 				printf("exit\n");
 			printf("minishell: exit: too many arguments\n");
+			g_exit_status = 1;
 			return (false);
 		}
 	}
