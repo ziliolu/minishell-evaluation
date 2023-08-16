@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:36:28 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/13 23:21:53 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:13:33 by lpicoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct s_ms
 	int			go_out;
 	char		*home_dir;
 	char		*clean_read_content;
+	char		*home_static;
 	t_counters	*clean;
 }	t_ms;
 
@@ -245,6 +246,8 @@ typedef struct s_val_quote
 
 // =============== BUILTINS ===============
 
+void	ft_modify_pwd(t_ms *ms, t_cd *cd);
+void	ft_modify_oldpwd(t_ms *ms, t_cd *cd);
 void	ft_cd_is_chdir(t_ms *ms, t_command *cmd, t_cd *cd);
 void	ft_is_not_pwd(t_ms *ms, t_command *cmd, t_cd *cd);
 void	ft_cd_while_is_not_pwd(t_ms *ms, t_command *cmd, t_cd *cd);
