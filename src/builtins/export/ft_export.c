@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 17:20:33 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/16 11:06:05 by lpicoli-         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:45:09 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void	ft_free_export(t_export *exp)
+{
+	ft_free(exp->str);
+	ft_free(exp->name);
+	ft_free(exp->info);
+}
 
 void	ft_export(t_ms *ms, t_command *cmd)
 {
@@ -36,9 +43,7 @@ void	ft_export(t_ms *ms, t_command *cmd)
 			ft_free_array(ms->paths);
 			ms->paths = ft_split(ft_getenv(ms, "PATH"), ':');
 		}
-		ft_free(exp.str);
-		ft_free(exp.name);
-		ft_free(exp.info);
+		ft_free_export(&exp);
 		exp.i++;
 	}
 }

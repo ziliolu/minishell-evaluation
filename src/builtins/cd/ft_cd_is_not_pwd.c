@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd_is_not_pwd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ialves-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:47:53 by ialves-m          #+#    #+#             */
-/*   Updated: 2023/08/13 18:37:21 by ialves-m         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:42:58 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_is_not_pwd(t_ms *ms, t_command *cmd, t_cd *cd)
 			{
 				free(cd->pwd);
 				cd->pwd = ft_strdup("/");
-			}	
+			}
 		}
 		else
 			ft_join_old_w_new_pwd(cd);

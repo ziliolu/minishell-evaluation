@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_heredoc_read_content.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpicoli- <lpicoli-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ialves-m <ialves-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:01:08 by lpicoli-          #+#    #+#             */
-/*   Updated: 2023/08/16 12:49:26 by lpicoli-         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:54:30 by ialves-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_exit_heredoc_free(t_ms *ms)
 	free(ms->count_args);
 	ft_free_elem_list(*ms->lexed_list);
 	free(ms->lexed_list);
-	if(ms->clean)
+	if (ms->clean)
 		free(ms->clean);
 	ft_free_env(*ms->vars);
 	free(ms->vars);
